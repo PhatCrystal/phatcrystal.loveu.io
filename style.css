@@ -1,0 +1,460 @@
+:root {
+    --primary: #38bdf8;
+    --secondary: #a855f7;
+    --bg: #020617;
+    --card-bg: rgba(15, 23, 42, 0.75);
+    --border: rgba(255, 255, 255, 0.1);
+    --text-muted: #cbd5e1;
+}
+
+/* ================= RESET ================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: #f8fafc;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ================= GLOBAL ================= */
+.is-hidden { display: none !important; }
+
+/* ================= NAVBAR ================= */
+.navbar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+    font-size: 1.6rem;
+    font-weight: 800;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--primary);
+    text-shadow: 0 0 15px rgba(56,189,248,0.4);
+}
+
+/* Bù navbar fixed */
+#main-content {
+    padding-top: 90px;
+}
+
+/* ================= AUTH LOCK ================= */
+#auth-lock {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: radial-gradient(circle, #0f172a, #020617);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#auth-lock.unlocked {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.lock-box {
+    background: var(--card-bg);
+    backdrop-filter: blur(30px);
+    padding: 60px 40px;
+    border-radius: 40px;
+    border: 1px solid var(--border);
+    text-align: center;
+    width: 90%;
+    max-width: 480px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+}
+
+.lock-icon {
+    font-size: 70px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+.lock-header h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+.lock-header p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+}
+
+/* ================= BACKGROUND FX ================= */
+.background-animation {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+}
+
+.shape {
+    position: absolute;
+    width: 650px;
+    height: 650px;
+    border-radius: 50%;
+    filter: blur(140px);
+    opacity: 0.18;
+}
+
+.shape:nth-child(1) {
+    background: var(--primary);
+    top: -15%;
+    left: -10%;
+    animation: move 25s infinite alternate;
+}
+
+.shape:nth-child(2) {
+    background: var(--secondary);
+    bottom: -15%;
+    right: -10%;
+    animation: move 30s infinite alternate-reverse;
+}
+
+@keyframes move {
+    to { transform: translate(120px, 80px) scale(1.1); }
+}
+
+/* ================= GLASS CARD ================= */
+.content-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 5%;
+}
+
+.glass-card {
+    width: 100%;
+    max-width: 460px;
+    padding: 50px;
+    border-radius: 40px;
+    background: var(--card-bg);
+    backdrop-filter: blur(30px);
+    border: 1px solid var(--border);
+    text-align: center;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+}
+
+.big-icon {
+    font-size: 80px;
+    margin-bottom: 25px;
+    filter: drop-shadow(0 0 20px rgba(56,189,248,0.3));
+}
+
+/* ================= LOADING ================= */
+#ug-loading {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: radial-gradient(circle, #0f172a, #020617);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease; /* Thêm để ẩn mượt mà */
+}
+
+.spinner-container {
+    position: relative;
+    width: 100px; /* Tăng nhẹ kích thước */
+    height: 100px;
+    margin: 0 auto;
+}
+
+.spinner {
+    position: absolute;
+    inset: 0;
+    border: 3px solid rgba(56,189,248,0.1);
+    border-top: 3px solid var(--primary);
+    border-radius: 50%;
+    animation: spin 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.decode-icon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: var(--secondary);
+    filter: drop-shadow(0 0 10px var(--secondary));
+    animation: pulseIcon 2s ease-in-out infinite;
+}
+
+.loading-bar {
+    width: 100%;
+    height: 6px; /* Dày hơn một chút để thấy rõ gradient */
+    background: rgba(255,255,255,0.05);
+    border-radius: 20px;
+    margin-top: 30px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.03);
+}
+
+.loading-progress {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    /* Transition 0.8s giúp thanh chạy từ 15 -> 50 -> 75 trông mượt mà hơn */
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1), background 0.5s;
+}
+
+/* Kiểu chữ cho câu nói vô tri */
+#ug-loader-status {
+    margin-top: 20px;
+    font-size: 14px;
+    color: var(--text-muted);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    min-height: 40px; /* Giữ khung không bị nhảy khi đổi câu */
+    line-height: 1.5;
+    font-style: italic;
+}
+
+/* Hiệu ứng hiện chữ */
+.fade-in {
+    animation: bounceText 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* ================= KEYFRAMES ADDED ================= */
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@keyframes pulseIcon {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.15); opacity: 1; filter: drop-shadow(0 0 15px var(--primary)); }
+}
+
+@keyframes gradientMove {
+    0% { background-position: 100% 0%; }
+    100% { background-position: -100% 0%; }
+}
+
+@keyframes bounceText {
+    0% { opacity: 0; transform: translateY(10px) scale(0.95); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+/* ================= ERROR ================= */
+.error-card { border: 1px solid rgba(239,68,68,0.3); }
+
+.error-glow {
+    color: #ef4444;
+    text-shadow: 0 0 20px rgba(239,68,68,0.6);
+}
+
+.error-title {
+    color: #ef4444;
+    font-weight: 800;
+}
+
+.error-note {
+    text-align: left;
+    background: rgba(0,0,0,0.3);
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px 0;
+}
+
+.error-note ul {
+    list-style: none;
+    display: grid;
+    gap: 8px;
+}
+
+@media (min-width: 600px) {
+    .error-note ul { grid-template-columns: 1fr 1fr; }
+}
+
+.error-note li {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    background: rgba(255,255,255,0.03);
+    padding: 8px;
+    border-radius: 8px;
+}
+
+/* ================= LIMIT ================= */
+.limit-card { border: 1px solid rgba(239,68,68,0.2); }
+
+.limit-icon-wrapper {
+    font-size: 4rem;
+    color: #ef4444;
+    margin-bottom: 20px;
+}
+
+.limit-title {
+    color: #ef4444;
+    font-weight: 800;
+}
+
+.time-badge {
+    background: rgba(239,68,68,0.1);
+    color: #ef4444;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 13px;
+    margin: 20px 0;
+}
+
+/* ================= FOOTER ================= */
+.footer-contact {
+    padding: 100px 8%;
+    text-align: center;
+    border-top: 1px solid var(--border);
+}
+
+.footer-contact h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 40px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.social-btn {
+    padding: 16px 32px;
+    border-radius: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: 0.4s;
+}
+
+.discord { color: #5865F2; border-color: #5865F2; }
+.telegram { color: #0088cc; border-color: #0088cc; }
+
+.social-btn:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.copyright {
+    margin-top: 60px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    opacity: 0.6;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .navbar { padding: 15px 5%; }
+    .nav-links { display: none; }
+    #main-content { padding-top: 70px; }
+    .glass-card { padding: 30px; }
+}
+/* =========================
+   KEY DISPLAY UI (PREMIUM)
+========================= */
+
+#display-key {
+    width: 100%;
+    padding: 18px 20px;
+    margin: 25px 0 20px;
+    border-radius: 16px;
+    background: linear-gradient(
+        135deg,
+        rgba(2, 6, 23, 0.85),
+        rgba(15, 23, 42, 0.85)
+    );
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    color: #38bdf8;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-align: center;
+    outline: none;
+    cursor: text;
+    box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.02),
+        0 0 25px rgba(56,189,248,0.15);
+}
+
+/* Không cho user chỉnh sửa cảm giác */
+#display-key::selection {
+    background: rgba(56,189,248,0.25);
+    color: #fff;
+}
+
+/* =========================
+   COPY BUTTON – SECURE
+========================= */
+
+#copy-btn {
+    width: 100%;
+    padding: 16px;
+    border-radius: 16px;
+    border: none;
+    background: linear-gradient(135deg, #38bdf8, #a855f7);
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: 0.35s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 15px 30px rgba(168,85,247,0.35);
+}
+
+#copy-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(168,85,247,0.45);
+}
+
+#copy-btn:active {
+    transform: scale(0.98);
+}
+
+/* =========================
+   COPY SUCCESS STATE
+========================= */
+
+#copy-btn i.fa-check {
+    color: #22c55e;
+}

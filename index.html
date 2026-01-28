@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhatCrystal - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="auth-lock">
+        <div class="lock-box">
+            <div class="lock-header">
+                <i class="fa-solid fa-shield-halved lock-icon"></i>
+                <h2>Security</h2>
+                <p id="lock-msg">Vui lòng xác minh để truy cập link</p>
+            </div>
+            <div id="turnstile-wrapper">
+                <div class="cf-turnstile" data-sitekey="0x4AAAAAACK3SnSR0CK-rLlG" data-callback="unlockSystem" data-theme="dark"></div>
+            </div>
+        </div>
+    </div>
+
+    <main id="main-content" class="is-hidden">
+        <div class="background-animation">
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+
+        <nav class="navbar">
+            <div class="nav-logo"><i class="fa-solid fa-gem"></i> PhatCrystal</div>
+            <div class="nav-links">
+                <a href="index.html">Trang chủ</a>
+                <a href="shop.html">Cửa hàng</a>
+                <a href="#contact">Liên hệ</a>
+            </div>
+        </nav>
+
+        <div id="ug-loading" class="is-hidden">
+            <div style="text-align: center; width: 280px;">
+                <div class="spinner-container">
+                    <div class="spinner"></div>
+                    <div class="decode-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                </div>
+                <div class="loading-bar">
+                    <div id="ug-progress" class="loading-progress"></div>
+                </div>
+                <div id="ug-loader-status" style="margin-top: 15px; font-size: 14px; color: #94a3b8; font-family: sans-serif;">
+                    Đang thiết lập kết nối an toàn...
+                </div>
+            </div>
+        </div>
+
+        <div id="render-app"></div>
+        
+        <div id="error-screen" class="is-hidden">
+            <div class="content-wrapper">
+                <div class="glass-card error-card">
+                    <i class="fa-solid fa-triangle-exclamation big-icon error-glow"></i>
+                    <h2 class="error-title">Access Denied</h2>
+                    <div class="error-note">
+                        <p>Nếu bạn thấy thông báo này, có thể do:</p>
+                        <ul>
+                            <li><i class="fa-solid fa-network-wired"></i> IP thiết bị không hợp lệ hoặc bị thay đổi</li>
+                            <li><i class="fa-solid fa-link-slash"></i> Hết lượt View Link Rút Gọn trong hôm nay</li>
+                            <li><i class="fa-solid fa-mask"></i> Phát hiện Sử dụng VPN, Proxy hoặc Warp 1.1.1.1</li>
+                            <li><i class="fa-solid fa-ad"></i> Trình chặn quảng cáo (AdBlock) đang hoạt động</li>
+                        </ul>
+                    </div>
+                    <button onclick="location.href='index.html'" class="btn-retry">
+                        <i class="fa-solid fa-rotate-right"></i> Trở Lại
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="limit-screen" class="is-hidden">
+            <div class="content-wrapper">
+                <div class="glass-card limit-card">
+                    <div class="limit-icon-wrapper">
+                        <i class="fa-solid fa-hourglass-end pulse-icon"></i>
+                    </div>
+                    <h2 class="limit-title">Hết Lượt Truy Cập</h2>
+                    <div class="limit-content">
+                        <p class="main-msg">Đã hết lượt xem cho thiết bị này.</p>
+                        <div class="limit-divider"></div>
+                        <p class="sub-msg">Bạn đã sử dụng hết hạn mức trong 24h qua. Vui lòng quay lại sau.</p>
+                    </div>
+                    <div class="time-badge">
+                        <i class="fa-solid fa-clock"></i> Reset sau: 24 Giờ
+                    </div>
+                    <button onclick="location.href='index.html'" class="btn-home">
+                        <i class="fa-solid fa-house"></i> Trang Chủ
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <section class="footer-contact" id="contact">
+            <h2>Liên Hệ Với Tôi</h2>
+            <div class="social-links">
+                <a href="https://discord.gg/CHfmPs47ZR" target="_blank" class="social-btn discord">
+                    <i class="fa-brands fa-discord"></i> Discord
+                </a>
+                <a href="https://t.me/phatcrystal" target="_blank" class="social-btn telegram">
+                    <i class="fa-brands fa-telegram"></i> Telegram
+                </a>
+            </div>
+            <p class="copyright">Copyright 2026 PhatCrystal. All rights reserved.</p>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

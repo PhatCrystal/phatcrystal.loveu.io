@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhatCrystal - Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> <link rel="stylesheet" href="shop-style.css"> </head>
+<body>
+    <div class="background-animation"><div class="shape"></div><div class="shape"></div></div>
+
+    <nav class="navbar">
+        <div class="nav-logo"><i class="fa-solid fa-gem"></i> PhatCrystal</div>
+        <div class="nav-links">
+            <a href="shop.html" class="active">Cửa hàng</a>
+        </div>
+    </nav>
+
+    <main class="shop-page-container">
+        <h1 class="shop-title">Hệ Thống Sản Phẩm</h1>
+
+        <div class="shop-controls">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="Tìm tên hoặc mã đơn (#PC...)" onkeyup="filterProducts()">
+            </div>
+            
+            <div class="category-filter">
+                <button class="tab-btn active" onclick="filterCategory('All')">Tất cả</button>
+                <button class="tab-btn" onclick="filterCategory('Code Tool')">Code Tool</button>
+                <button class="tab-btn" onclick="filterCategory('Roblox Script')">Roblox Script</button>
+            </div>
+        </div>
+        
+        <div class="shop-grid" id="product-list"></div>
+    </main>
+
+    <footer class="footer-contact">
+        <p class="copyright">Copyright 2026 PhatCrystal. All rights reserved.</p>
+    </footer>
+
+    <script src="shop-manager.js"></script>
+</body>
+</html>
